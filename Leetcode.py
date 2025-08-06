@@ -40,3 +40,22 @@ class Solution:
                 complement = target - number
                 if(complement in num_index and num_index[complement] != i):
                     return [i, num_index[complement]]
+                
+
+    class Solution:
+        def maxArea(self, height: list[int]) -> int:
+            l = 0
+            r = len(height) -1
+            max_area = float('-inf')
+            
+            while l < r:
+                area = min(height[l], height[r]) * (r-l)
+                max_area = max(max_area, area)
+                
+                if height[l] < height[r]:
+                    l += 1
+                    
+                else:
+                    r -= 1
+                    
+            return int(max_area) 
