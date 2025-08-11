@@ -281,3 +281,38 @@ class Solution:
                     
                 else:
                     l = i + 1
+
+
+
+
+
+# Amazon Interview Question
+
+def maximizeProdOps(s: str) -> int:
+    if not s:
+        return 0  # empty string => no ops possible
+
+    start_char = s[0]
+    end_char = s[-1]
+
+    # Find rightmost occurrence of start_char (can't remove before this)
+    left_bound = 0
+    for i in range(len(s)):
+        if s[i] == start_char:
+            left_bound = i
+
+    # Find leftmost occurrence of end_char (can't remove after this)
+    right_bound = len(s) - 1
+    for i in range(len(s) - 1, -1, -1):
+        if s[i] == end_char:
+            right_bound = i
+
+    # Minimal preserved segment
+    if left_bound > right_bound:
+        # No valid segment found — means string already fails to match type
+        return 0
+
+    preserved_length = right_bound - left_bound + 1
+    max_operations = len(s) - preserved_length
+
+    return max_operations
