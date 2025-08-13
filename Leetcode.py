@@ -327,3 +327,11 @@ class Solution:
                 return True
             duplicate[i] = True
         return False
+
+
+
+class Solution:
+    def isPowerOfThree(self, n: int) -> bool:
+        if n**(1/3) != 3:
+            return False
+        return True
