@@ -335,3 +335,22 @@ class Solution:
         if n**(1/3) != 3:
             return False
         return True
+    
+
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        if not strs:
+            return []
+        
+        resultMap = {}  # key: sorted letters or letter counts, value: list of anagrams
+        
+        for word in strs:
+            # Sort the characters to make the key
+            key = tuple(sorted(word))
+            
+            # Add to dictionary
+            if key not in resultMap:
+                resultMap[key] = []
+            resultMap[key].append(word)
+        
+        return list(resultMap.values())
