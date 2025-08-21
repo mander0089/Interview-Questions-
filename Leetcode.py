@@ -505,3 +505,18 @@ class Solution:
             self.last = node
 
             self.inorder_link(node.right)
+
+
+
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        d = {}
+        for char in t:
+            d[char] = 1
+
+        for char in s:
+            if char in d:
+                continue
+            else:
+                return False
+        return True
