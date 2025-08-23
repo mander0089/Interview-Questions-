@@ -16,7 +16,7 @@ def groupAnagrams(strs):
     for word in strs:
         # Sort the characters to make the key
         key = tuple(sorted(word))
-        
+
         
         # Add to dictionary
         if key not in resultMap:
@@ -130,3 +130,22 @@ if __name__ == "__main__":
         print("✅ Both methods produce equivalent results!")
     else:
         print("❌ Methods produce different results!")
+
+
+
+
+
+ class Solution:
+    def jump(self, nums: List[int]) -> int:
+        result = 0
+        l = r = 0
+
+        while r < len(nums) -1:
+            farthest = 0
+            for i in range(l, r + 1):
+                farthest = max(farthest, i + nums[i])
+            l = r + 1
+            r = farthest
+            result += 1
+
+        return result
