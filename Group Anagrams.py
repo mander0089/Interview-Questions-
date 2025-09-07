@@ -180,3 +180,37 @@ class Solution:
             root.right = self.splitTree(preorder, io_map, rootIndex + mid - left + 1, mid + 1, right)
 
         return root
+    
+
+
+
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, val = 0, neighbors = None):
+        self.val = val
+        self.neighbors = neighbors if neighbors is not None else []
+"""
+
+from typing import Optional
+class Solution:
+    def cloneGraph(self, node: Optional['Node']) -> Optional['Node']:
+        if not node:
+            return None
+
+        cloned_nodes = {}
+        queue = [node]
+
+        cloned_nodes[node] = Node(node.val)
+
+        while queue:
+            curr_node = queue.pop(0)
+
+            for neighbor in curr_node.neighbors:
+                if neighbor not in cloned_nodes:
+                    cloned_nodes[neighbor] = Node(neighbor.val)
+                    queue.append(neighbor)
+
+                cloned_nodes[curr_node].neighbors.append(cloned_nodes[neighbor])
+
+        return cloned_nodes[node]
